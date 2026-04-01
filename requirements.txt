@@ -1,3 +1,6 @@
 rembg>=2.0.50
 onnxruntime>=1.14.0
 Pillow>=9.0.0
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+python-multipart>=0.0.9
