@@ -1,0 +1,3 @@
+python batch_remove_bg.py -i ./samples -o ./outputs
+
+python batch_remove_bg_faster.py -m fastest -i ./samples -o ./outputs2
