@@ -1,3 +1,14 @@
 python batch_remove_bg.py -i ./samples -o ./outputs
-
 python batch_remove_bg_faster.py -m fastest -i ./samples -o ./outputs2
+
+# Create and activate conda env for API/model predownload
+conda create -n bg-remover python=3.11 -y
+conda activate bg-remover
+pip install -r requirements.txt
+
+# Pre-download rembg models locally (required before docker build)
+python predownload_models.py --models-dir ./models
+
+# Build and run API container (uses pre-downloaded models from ./models)
+docker build -t background-remover-api .
+docker run --rm -p 8000:8000 background-remover-api
